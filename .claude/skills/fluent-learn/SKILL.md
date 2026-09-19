@@ -60,8 +60,8 @@ Need all 6 DBs. If any missing, direct the learner to `/fluent-setup` and stop.
 
 ### 4. Route
 
-- 1-5 → hand off to the matching skill (`fluent-writing`, `fluent-speaking`, `fluent-vocab`, `fluent-reading`, `fluent-review`). Those skills cover everything needed; this skill's job here is just to dispatch.
-- 6 (adaptive mix) → use this skill's own exercise sequencer (below).
+- 1-5 → these map to `fluent-writing`, `fluent-speaking`, `fluent-vocab`, `fluent-reading`, `fluent-review`. **Do not attempt to invoke them via the Skill tool** — every one of them is itself gated with `disable-model-invocation: true`, so a Skill-tool call will always fail. Instead, tell the learner the exact slash command for their choice (e.g. "Great — run `/fluent-writing` to start that.") and stop; they need to type it themselves.
+- 6 (adaptive mix) → use this skill's own exercise sequencer (below). This path has no such restriction since it never calls the gated skills — it runs inline using the ungated helper skills (`fluent-feedback-formatter`, `fluent-sm2-calculator`, `fluent-db-updater`, `fluent-session-analyzer`).
 
 ### 5. Adaptive mix (option 6)
 

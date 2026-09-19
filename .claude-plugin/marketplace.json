@@ -1,15 +1,15 @@
 {
-  "name": "m98",
+  "name": "fluent-fork",
   "owner": {
-    "name": "Mohammad Kermani"
+    "name": "Doszhan"
   },
   "metadata": {
-    "description": "Fluent — AI Language Learning Kit for Claude Code. Single-plugin marketplace hosting the fluent plugin.",
-    "version": "0.3.0"
+    "description": "Local fork of the Fluent plugin (originally by Mohammad Kermani) with bugfixes. Single-plugin marketplace hosting the fluent-fork plugin.",
+    "version": "0.3.0-fork.1"
   },
   "plugins": [
     {
-      "name": "fluent",
+      "name": "fluent-fork",
       "source": "./",
       "description": "Fluent — AI Language Learning Kit. Personal AI tutor for any target language (Dutch, Spanish, French, German, Japanese, Korean, Arabic, and more). Uses spaced repetition (SM-2), active recall, adaptive difficulty, and progress tracking across 6 databases. Run /fluent-setup to onboard, then /fluent-learn, /fluent-vocab, /fluent-writing, /fluent-speaking, /fluent-reading, /fluent-review daily.",
       "category": "education",
@@ -18,11 +18,9 @@
       "repository": "https://github.com/m98/fluent",
       "license": "MIT",
       "author": {
-        "name": "Mohammad Kermani",
-        "url": "https://github.com/m98"
+        "name": "Mohammad Kermani (original), forked locally by Doszhan"
       },
-      "version": "0.3.0",
-      "strict": true
+      "version": "0.3.0-fork.1"
     }
   ]
 }

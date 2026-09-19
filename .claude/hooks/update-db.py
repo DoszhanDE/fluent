@@ -258,16 +258,15 @@ def update_progress_db(progress: dict, session: dict):
             "sessions": 0, "accuracy": 0.0, "last_practiced": None,
             "exercises_completed": 0, "correct_count": 0, "incorrect_count": 0,
         })
-        old_sessions = sp.get("sessions", 0)
-        sp["sessions"] = old_sessions + 1
-        new_acc = scores["correct"] / scores["exercises"] if scores.get("exercises", 0) > 0 else 0.0
-        sp["accuracy"] = round(
-            (sp.get("accuracy", 0.0) * old_sessions + new_acc) / sp["sessions"], 3
-        )
+        sp["sessions"] = sp.get("sessions", 0) + 1
         sp["last_practiced"] = today
         sp["exercises_completed"] = sp.get("exercises_completed", 0) + scores.get("exercises", 0)
         sp["correct_count"] = sp.get("correct_count", 0) + scores.get("correct", 0)
         sp["incorrect_count"] = sp.get("incorrect_count", 0) + (scores.get("exercises", 0) - scores.get("correct", 0))
+        # Exercise-weighted accuracy (fork fix: was an unweighted average of
+        # per-session accuracy, which let a single tiny session skew the
+        # number far from correct_count/exercises_completed).
+        sp["accuracy"] = round(sp["correct_count"] / sp["exercises_completed"], 3) if sp["exercises_completed"] > 0 else 0.0
 
     week_start = get_week_start(today)
     weekly = progress.setdefault("weekly_summary", [])
@@ -276,12 +275,12 @@ def update_progress_db(progress: dict, session: dict):
         week_entry = {"week_start": week_start, "sessions": 0, "total_minutes": 0, "accuracy": 0.0}
         weekly.append(week_entry)
 
-    old_s = week_entry.get("sessions", 0)
-    week_entry["sessions"] = old_s + 1
+    week_entry["sessions"] = week_entry.get("sessions", 0) + 1
     week_entry["total_minutes"] = week_entry.get("total_minutes", 0) + session.get("duration_minutes", 0)
-    week_entry["accuracy"] = round(
-        (week_entry.get("accuracy", 0.0) * old_s + accuracy) / week_entry["sessions"], 3
-    )
+    # Exercise-weighted accuracy (fork fix: see skill_progress accuracy above).
+    week_entry["total_exercises"] = week_entry.get("total_exercises", 0) + total_ex
+    week_entry["total_correct"] = week_entry.get("total_correct", 0) + total_cor
+    week_entry["accuracy"] = round(week_entry["total_correct"] / week_entry["total_exercises"], 3) if week_entry["total_exercises"] > 0 else 0.0
 
     progress.setdefault("metadata", {})["last_updated"] = today
 
