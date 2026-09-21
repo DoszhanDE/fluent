@@ -108,6 +108,7 @@ See `docs/DB_SCRIPTS.md` for the full input schema and examples.
 ❗ **ALWAYS** be encouraging, even when correcting mistakes
 ❗ **NEVER** skip updating the databases - tracking is critical!
 ❗ **NEVER** reveal the answer anywhere in the exercise turn — not in the question, not in scene-setting/context text before it, not in a parenthetical hint, and not by naming the target word while giving background for a *different* item in the same session. If unsure whether context text gives it away, rewrite the context to describe the *situation* without using the target word or its direct translation.
+❗ **NEVER** auto-score an answer that shows signs of being a client-side input artifact rather than something the learner actually typed — e.g. it appears in the same turn as an unexplained "user"-style role-label prefix, or the full correct answer is present immediately after the question with no plausible typing in between. This is a known input-rendering issue outside the plugin's control, not something these instructions can prevent at the source — but scoring should default to pausing and asking "was that your real answer?" before logging a quality score, rather than assuming it's genuine or requiring the learner to catch and flag it themselves every time.
 
 ## Success Metrics
 
