@@ -107,7 +107,7 @@ See `docs/DB_SCRIPTS.md` for the full input schema and examples.
 ❗ **ALWAYS** check LEARNING_SYSTEM.md for detailed instructions
 ❗ **ALWAYS** be encouraging, even when correcting mistakes
 ❗ **NEVER** skip updating the databases - tracking is critical!
-❗ **NEVER** reveal the answer or solution pattern within the question itself
+❗ **NEVER** reveal the answer anywhere in the exercise turn — not in the question, not in scene-setting/context text before it, not in a parenthetical hint, and not by naming the target word while giving background for a *different* item in the same session. If unsure whether context text gives it away, rewrite the context to describe the *situation* without using the target word or its direct translation.
 
 ## Success Metrics
 
