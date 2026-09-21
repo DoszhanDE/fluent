@@ -59,7 +59,7 @@ Use this exact structure. Fill in values from the databases; compute percentages
 
 **Current Level:** {current_level}
 **Target Level:** {target_level}
-**Progress to {next_level}:** {progress_bar} {percentage}%
+**Progress to B2:** {progress_bar} {percentage}% (total_study_minutes / 5400 — the 90h B1→B2 target; target_level above may be further out)
 
 **Days Studying:** {total_days}
 **Current Streak:** 🔥 {streak_days} {day_or_days} {streak_message}
@@ -135,6 +135,18 @@ Use this exact structure. Fill in values from the databases; compute percentages
 ## 🏆 Achievements Unlocked
 
 {list from learner-profile → achievements, show locked ones with 🔒}
+
+---
+
+## 📅 Daily Activity
+
+Group every entry in `session-log.sessions` by `date` and sum `duration_minutes` per day (count sessions per day too). List every day from the first session to today in chronological order — include days with 0 sessions as gaps, don't skip them.
+
+| Date | Sessions | Minutes |
+|------|----------|---------|
+{one row per calendar day since the first session, oldest first}
+
+Call out today's row and the single busiest day (most minutes) in a one-line note below the table.
 
 ---
 
